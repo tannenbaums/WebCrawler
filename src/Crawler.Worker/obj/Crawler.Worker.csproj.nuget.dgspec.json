@@ -10,7 +10,7 @@
         "projectUniqueName": "C:\\Dev\\WebCrawler\\src\\Crawler.Core\\Crawler.Core.csproj",
         "projectName": "Crawler.Core",
         "projectPath": "C:\\Dev\\WebCrawler\\src\\Crawler.Core\\Crawler.Core.csproj",
-        "packagesPath": "C:\\Users\\Shmuel\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\CodexSandboxOffline\\.nuget\\packages\\",
         "outputPath": "C:\\Dev\\WebCrawler\\src\\Crawler.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
@@ -76,7 +76,7 @@
         "projectUniqueName": "C:\\Dev\\WebCrawler\\src\\Crawler.Infrastructure\\Crawler.Infrastructure.csproj",
         "projectName": "Crawler.Infrastructure",
         "projectPath": "C:\\Dev\\WebCrawler\\src\\Crawler.Infrastructure\\Crawler.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Shmuel\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\CodexSandboxOffline\\.nuget\\packages\\",
         "outputPath": "C:\\Dev\\WebCrawler\\src\\Crawler.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
@@ -172,7 +172,7 @@
         "projectUniqueName": "C:\\Dev\\WebCrawler\\src\\Crawler.Worker\\Crawler.Worker.csproj",
         "projectName": "Crawler.Worker",
         "projectPath": "C:\\Dev\\WebCrawler\\src\\Crawler.Worker\\Crawler.Worker.csproj",
-        "packagesPath": "C:\\Users\\Shmuel\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\CodexSandboxOffline\\.nuget\\packages\\",
         "outputPath": "C:\\Dev\\WebCrawler\\src\\Crawler.Worker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [

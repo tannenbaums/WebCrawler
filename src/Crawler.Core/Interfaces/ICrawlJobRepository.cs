@@ -12,4 +12,5 @@ public interface ICrawlJobRepository
     Task SaveEdgeAsync(Guid jobId, long parentPageId, long childPageId, CancellationToken cancellationToken = default);
     Task<IReadOnlyList<CrawlTreePage>> GetPagesAsync(Guid jobId, CancellationToken cancellationToken = default);
     Task<IReadOnlyList<CrawlHistoryItem>> GetRecentAsync(int take = 50, CancellationToken cancellationToken = default);
+    Task CheckDatabaseConnectionAsync(CancellationToken cancellationToken = default);
 }

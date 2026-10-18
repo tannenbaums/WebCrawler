@@ -80,3 +80,6 @@ C:\Dev\WebCrawler\src\Crawler.Api\obj\Debug\net8.0\Crawler.Api.pdb
 C:\Dev\WebCrawler\src\Crawler.Api\obj\Debug\net8.0\Crawler.Api.genruntimeconfig.cache
 C:\Dev\WebCrawler\src\Crawler.Api\obj\Debug\net8.0\ref\Crawler.Api.dll
 C:\Dev\WebCrawler\src\Crawler.Api\bin\Debug\net8.0\AngleSharp.dll
+C:\Dev\WebCrawler\src\Crawler.Api\bin\Debug\net8.0\Crawler.Application.dll
+C:\Dev\WebCrawler\src\Crawler.Api\bin\Debug\net8.0\Crawler.Application.pdb
+C:\Dev\WebCrawler\src\Crawler.Api\obj\Debug\net8.0\Crawler.Api.sourcelink.json

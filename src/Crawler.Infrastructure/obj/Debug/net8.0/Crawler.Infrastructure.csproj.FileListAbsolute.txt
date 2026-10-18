@@ -13,3 +13,4 @@ C:\Dev\WebCrawler\src\Crawler.Infrastructure\obj\Debug\net8.0\Crawler.Infrastruc
 C:\Dev\WebCrawler\src\Crawler.Infrastructure\obj\Debug\net8.0\refint\Crawler.Infrastructure.dll
 C:\Dev\WebCrawler\src\Crawler.Infrastructure\obj\Debug\net8.0\Crawler.Infrastructure.pdb
 C:\Dev\WebCrawler\src\Crawler.Infrastructure\obj\Debug\net8.0\ref\Crawler.Infrastructure.dll
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\obj\Debug\net8.0\Crawler.Infrastructure.sourcelink.json

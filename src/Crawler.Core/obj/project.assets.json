@@ -8,7 +8,7 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Shmuel\\.nuget\\packages\\": {},
+    "C:\\Users\\CodexSandboxOffline\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -17,7 +17,7 @@
       "projectUniqueName": "C:\\Dev\\WebCrawler\\src\\Crawler.Core\\Crawler.Core.csproj",
       "projectName": "Crawler.Core",
       "projectPath": "C:\\Dev\\WebCrawler\\src\\Crawler.Core\\Crawler.Core.csproj",
-      "packagesPath": "C:\\Users\\Shmuel\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\CodexSandboxOffline\\.nuget\\packages\\",
       "outputPath": "C:\\Dev\\WebCrawler\\src\\Crawler.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [

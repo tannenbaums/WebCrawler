@@ -147,6 +147,13 @@ public class DapperCrawlJobRepository : ICrawlJobRepository
         return jobs.AsList();
     }
 
+    public async Task CheckDatabaseConnectionAsync(CancellationToken cancellationToken = default)
+    {
+        await using var connection = new SqlConnection(_databaseSettings.ConnectionString);
+        await connection.OpenAsync(cancellationToken);
+        await connection.ExecuteScalarAsync<int>(new CommandDefinition("SELECT 1", cancellationToken: cancellationToken));
+    }
+
     private async Task<int> GetStatusIdAsync(string statusName, CancellationToken cancellationToken)
     {
         using var connection = new SqlConnection(_databaseSettings.ConnectionString);

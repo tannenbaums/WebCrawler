@@ -9,3 +9,4 @@ C:\Dev\WebCrawler\src\Crawler.Core\obj\Debug\net8.0\Crawler.Core.dll
 C:\Dev\WebCrawler\src\Crawler.Core\obj\Debug\net8.0\refint\Crawler.Core.dll
 C:\Dev\WebCrawler\src\Crawler.Core\obj\Debug\net8.0\Crawler.Core.pdb
 C:\Dev\WebCrawler\src\Crawler.Core\obj\Debug\net8.0\ref\Crawler.Core.dll
+C:\Dev\WebCrawler\src\Crawler.Core\obj\Debug\net8.0\Crawler.Core.sourcelink.json

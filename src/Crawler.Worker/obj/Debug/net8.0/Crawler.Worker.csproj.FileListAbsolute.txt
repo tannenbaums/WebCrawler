@@ -91,3 +91,4 @@ C:\Dev\WebCrawler\src\Crawler.Worker\obj\Debug\net8.0\Crawler.Worker.pdb
 C:\Dev\WebCrawler\src\Crawler.Worker\obj\Debug\net8.0\Crawler.Worker.genruntimeconfig.cache
 C:\Dev\WebCrawler\src\Crawler.Worker\obj\Debug\net8.0\ref\Crawler.Worker.dll
 C:\Dev\WebCrawler\src\Crawler.Worker\bin\Debug\net8.0\AngleSharp.dll
+C:\Dev\WebCrawler\src\Crawler.Worker\obj\Debug\net8.0\Crawler.Worker.sourcelink.json

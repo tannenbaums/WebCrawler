@@ -1,18 +1,28 @@
 using Crawler.Core.Interfaces;
 using Crawler.Core.Models;
+using Crawler.Application.Services;
 using Crawler.Infrastructure.Messaging;
 using Crawler.Infrastructure.Repositories;
 using Crawler.Infrastructure.Services;
 using Crawler.Infrastructure.Settings;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.ClearProviders();
+builder.Logging.AddJsonConsole(options =>
+{
+    options.IncludeScopes = true;
+    options.TimestampFormat = "yyyy-MM-ddTHH:mm:ss.fffZ ";
+});
 
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection(DatabaseSettings.SectionName));
 builder.Services.Configure<RabbitMqSettings>(builder.Configuration.GetSection(RabbitMqSettings.SectionName));
 
 builder.Services.AddSingleton<ICrawlJobRepository, DapperCrawlJobRepository>();
 builder.Services.AddSingleton<IRabbitMqPublisher, RabbitMqPublisher>();
-builder.Services.AddHttpClient<ICrawlExecutionService, CrawlExecutionService>();
+builder.Services.AddScoped<ICrawlExecutionService, CrawlExecutionService>();
+builder.Services.AddHttpClient<ICrawlPageFetcher, HttpCrawlPageFetcher>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -26,10 +36,58 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.Use(async (context, next) =>
+{
+    var logger = context.RequestServices.GetRequiredService<ILoggerFactory>().CreateLogger("HttpRequest");
+    var correlationId = context.Request.Headers["X-Correlation-ID"].FirstOrDefault() ?? context.TraceIdentifier;
+    context.Response.Headers["X-Correlation-ID"] = correlationId;
+    using var scope = logger.BeginScope(new Dictionary<string, object>
+    {
+        ["CorrelationId"] = correlationId,
+        ["TraceId"] = context.TraceIdentifier
+    });
+    var timer = Stopwatch.StartNew();
+    try
+    {
+        await next();
+    }
+    finally
+    {
+        logger.LogInformation("HTTP {Method} {Path} responded {StatusCode} in {ElapsedMs} ms", context.Request.Method, context.Request.Path, context.Response.StatusCode, timer.Elapsed.TotalMilliseconds);
+    }
+});
 app.UseHttpsRedirection();
 app.MapControllers();
 
-app.MapGet("/health", () => Results.Ok(new { status = "ok" }));
+app.MapGet("/health/live", () => Results.Ok(new { status = "ok" }));
+
+app.MapGet("/health/ready", async (ICrawlJobRepository repository, ILoggerFactory loggerFactory, CancellationToken cancellationToken) =>
+{
+    try
+    {
+        await repository.CheckDatabaseConnectionAsync(cancellationToken);
+        return Results.Ok(new { status = "ready", checks = new { database = "ok" } });
+    }
+    catch (Exception exception)
+    {
+        loggerFactory.CreateLogger("Readiness").LogError(exception, "Database readiness check failed");
+        return Results.Json(new { status = "not_ready", checks = new { database = "failed" } }, statusCode: StatusCodes.Status503ServiceUnavailable);
+    }
+});
+
+app.MapGet("/health", async (ICrawlJobRepository repository, ILoggerFactory loggerFactory, CancellationToken cancellationToken) =>
+{
+    try
+    {
+        await repository.CheckDatabaseConnectionAsync(cancellationToken);
+        return Results.Ok(new { status = "ready", checks = new { database = "ok" } });
+    }
+    catch (Exception exception)
+    {
+        loggerFactory.CreateLogger("Readiness").LogError(exception, "Database readiness check failed");
+        return Results.Json(new { status = "not_ready", checks = new { database = "failed" } }, statusCode: StatusCodes.Status503ServiceUnavailable);
+    }
+});
 
 app.MapGet("/api/jobs", async (int? take, ICrawlJobRepository repository, CancellationToken cancellationToken) =>
 {
@@ -39,7 +97,7 @@ app.MapGet("/api/jobs", async (int? take, ICrawlJobRepository repository, Cancel
 
 var useDirectExecution = builder.Configuration.GetValue("Execution:Direct", true);
 
-app.MapPost("/api/jobs", async (CrawlJobRequest request, ICrawlJobRepository repository, IRabbitMqPublisher publisher, ICrawlExecutionService crawlService, CancellationToken cancellationToken) =>
+app.MapPost("/api/jobs", async (CrawlJobRequest request, ICrawlJobRepository repository, IRabbitMqPublisher publisher, ICrawlExecutionService crawlService, ILoggerFactory loggerFactory, CancellationToken cancellationToken) =>
 {
     if (string.IsNullOrWhiteSpace(request.Url))
     {
@@ -62,6 +120,8 @@ app.MapPost("/api/jobs", async (CrawlJobRequest request, ICrawlJobRepository rep
     }
 
     var jobId = await repository.CreateAsync(request, cancellationToken);
+    var requestLogger = loggerFactory.CreateLogger("CrawlRequest");
+    requestLogger.LogInformation("Accepted crawl job {CrawlJobId} for {StartUrl}", jobId, request.Url);
     if (useDirectExecution)
     {
         await crawlService.ExecuteAsync(request, jobId, cancellationToken);

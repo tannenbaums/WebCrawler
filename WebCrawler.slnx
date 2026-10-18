@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/Crawler.Application/Crawler.Application.csproj" />
     <Project Path="src/Crawler.Api/Crawler.Api.csproj" />
     <Project Path="src/Crawler.Core/Crawler.Core.csproj" />
     <Project Path="src/Crawler.Infrastructure/Crawler.Infrastructure.csproj" />

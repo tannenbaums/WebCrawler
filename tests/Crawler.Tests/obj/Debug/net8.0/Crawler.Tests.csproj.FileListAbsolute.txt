@@ -100,3 +100,4 @@ C:\Dev\WebCrawler\tests\Crawler.Tests\obj\Debug\net8.0\refint\Crawler.Tests.dll
 C:\Dev\WebCrawler\tests\Crawler.Tests\obj\Debug\net8.0\Crawler.Tests.pdb
 C:\Dev\WebCrawler\tests\Crawler.Tests\obj\Debug\net8.0\Crawler.Tests.genruntimeconfig.cache
 C:\Dev\WebCrawler\tests\Crawler.Tests\obj\Debug\net8.0\ref\Crawler.Tests.dll
+C:\Dev\WebCrawler\tests\Crawler.Tests\obj\Debug\net8.0\Crawler.Tests.sourcelink.json
