@@ -1,0 +1,15 @@
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\obj\Debug\net8.0\Crawler.Infrastructure.csproj.AssemblyReference.cache
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\obj\Debug\net8.0\Crawler.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\obj\Debug\net8.0\Crawler.Infrastructure.AssemblyInfoInputs.cache
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\obj\Debug\net8.0\Crawler.Infrastructure.AssemblyInfo.cs
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\obj\Debug\net8.0\Crawler.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\bin\Debug\net8.0\Crawler.Infrastructure.deps.json
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\bin\Debug\net8.0\Crawler.Infrastructure.dll
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\bin\Debug\net8.0\Crawler.Infrastructure.pdb
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\bin\Debug\net8.0\Crawler.Core.dll
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\bin\Debug\net8.0\Crawler.Core.pdb
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\obj\Debug\net8.0\Crawler..D2E16017.Up2Date
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\obj\Debug\net8.0\Crawler.Infrastructure.dll
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\obj\Debug\net8.0\refint\Crawler.Infrastructure.dll
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\obj\Debug\net8.0\Crawler.Infrastructure.pdb
+C:\Dev\WebCrawler\src\Crawler.Infrastructure\obj\Debug\net8.0\ref\Crawler.Infrastructure.dll

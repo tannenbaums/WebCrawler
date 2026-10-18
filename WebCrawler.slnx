@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Crawler.Api/Crawler.Api.csproj" />
+    <Project Path="src/Crawler.Core/Crawler.Core.csproj" />
+    <Project Path="src/Crawler.Infrastructure/Crawler.Infrastructure.csproj" />
+    <Project Path="src/Crawler.Worker/Crawler.Worker.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Crawler.Tests/Crawler.Tests.csproj" />
+  </Folder>
+</Solution>

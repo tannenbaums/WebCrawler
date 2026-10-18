@@ -1,0 +1,11 @@
+C:\Dev\WebCrawler\src\Crawler.Core\bin\Debug\net8.0\Crawler.Core.deps.json
+C:\Dev\WebCrawler\src\Crawler.Core\bin\Debug\net8.0\Crawler.Core.dll
+C:\Dev\WebCrawler\src\Crawler.Core\bin\Debug\net8.0\Crawler.Core.pdb
+C:\Dev\WebCrawler\src\Crawler.Core\obj\Debug\net8.0\Crawler.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\WebCrawler\src\Crawler.Core\obj\Debug\net8.0\Crawler.Core.AssemblyInfoInputs.cache
+C:\Dev\WebCrawler\src\Crawler.Core\obj\Debug\net8.0\Crawler.Core.AssemblyInfo.cs
+C:\Dev\WebCrawler\src\Crawler.Core\obj\Debug\net8.0\Crawler.Core.csproj.CoreCompileInputs.cache
+C:\Dev\WebCrawler\src\Crawler.Core\obj\Debug\net8.0\Crawler.Core.dll
+C:\Dev\WebCrawler\src\Crawler.Core\obj\Debug\net8.0\refint\Crawler.Core.dll
+C:\Dev\WebCrawler\src\Crawler.Core\obj\Debug\net8.0\Crawler.Core.pdb
+C:\Dev\WebCrawler\src\Crawler.Core\obj\Debug\net8.0\ref\Crawler.Core.dll
