@@ -10,7 +10,7 @@
         "projectUniqueName": "C:\\Dev\\WebCrawler\\src\\Crawler.Core\\Crawler.Core.csproj",
         "projectName": "Crawler.Core",
         "projectPath": "C:\\Dev\\WebCrawler\\src\\Crawler.Core\\Crawler.Core.csproj",
-        "packagesPath": "C:\\Users\\CodexSandboxOffline\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Shmuel\\.nuget\\packages\\",
         "outputPath": "C:\\Dev\\WebCrawler\\src\\Crawler.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
@@ -41,7 +41,7 @@
           ]
         },
         "restoreAuditProperties": {
-          "enableAudit": "true",
+          "enableAudit": "false",
           "auditLevel": "low",
           "auditMode": "direct"
         },

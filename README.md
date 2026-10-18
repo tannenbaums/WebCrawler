@@ -56,7 +56,7 @@ dotnet run --project .\src\Crawler.Api\Crawler.Api.csproj
 
 The API should respond at `http://localhost:5088/health/ready` (database readiness), with liveness at `http://localhost:5088/health/live`. Development Swagger is at `http://localhost:5088/swagger`.
 
-Direct execution is enabled by default in `src/Crawler.Api/appsettings.json` with `Execution:Direct` set to `true`. A crawl request runs in the API process and returns its result when finished. This is the temporary shortcut that bypasses RabbitMQ while keeping the queue and worker projects in the solution.
+Direct execution is enabled by default in `src/Crawler.Api/appsettings.json` with `Execution:Direct` set to `true`. The API accepts a job immediately and queues it in-process; the UI polls the saved job status and page count to show progress. This temporary shortcut bypasses RabbitMQ while keeping the queue and worker projects in the solution. The in-process queue is for local/single-instance use; it is not durable across API restarts.
 
 ### 2. Start the dashboard
 

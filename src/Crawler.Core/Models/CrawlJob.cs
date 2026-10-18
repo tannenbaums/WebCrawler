@@ -6,6 +6,7 @@ public class CrawlJob
     public Guid CrawlId { get; set; }
     public string InputUrl { get; set; } = string.Empty;
     public CrawlJobStatus Status { get; set; } = CrawlJobStatus.Pending;
+    public int MaxDepth { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
     public DateTimeOffset? StartedAt { get; set; }
     public DateTimeOffset? CompletedAt { get; set; }

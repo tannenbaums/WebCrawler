@@ -1,5 +1,6 @@
 using Crawler.Core.Interfaces;
 using Crawler.Core.Models;
+using Crawler.Api;
 using Crawler.Application.Services;
 using Crawler.Infrastructure.Messaging;
 using Crawler.Infrastructure.Repositories;
@@ -23,6 +24,9 @@ builder.Services.AddSingleton<ICrawlJobRepository, DapperCrawlJobRepository>();
 builder.Services.AddSingleton<IRabbitMqPublisher, RabbitMqPublisher>();
 builder.Services.AddScoped<ICrawlExecutionService, CrawlExecutionService>();
 builder.Services.AddHttpClient<ICrawlPageFetcher, HttpCrawlPageFetcher>();
+builder.Services.AddSingleton<InProcessCrawlJobQueue>();
+builder.Services.AddSingleton<ICrawlJobQueue>(services => services.GetRequiredService<InProcessCrawlJobQueue>());
+builder.Services.AddHostedService<InProcessCrawlJobQueue>(services => services.GetRequiredService<InProcessCrawlJobQueue>());
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -97,7 +101,7 @@ app.MapGet("/api/jobs", async (int? take, ICrawlJobRepository repository, Cancel
 
 var useDirectExecution = builder.Configuration.GetValue("Execution:Direct", true);
 
-app.MapPost("/api/jobs", async (CrawlJobRequest request, ICrawlJobRepository repository, IRabbitMqPublisher publisher, ICrawlExecutionService crawlService, ILoggerFactory loggerFactory, CancellationToken cancellationToken) =>
+app.MapPost("/api/jobs", async (CrawlJobRequest request, ICrawlJobRepository repository, IRabbitMqPublisher publisher, ICrawlJobQueue jobQueue, ILoggerFactory loggerFactory, CancellationToken cancellationToken) =>
 {
     if (string.IsNullOrWhiteSpace(request.Url))
     {
@@ -124,11 +128,8 @@ app.MapPost("/api/jobs", async (CrawlJobRequest request, ICrawlJobRepository rep
     requestLogger.LogInformation("Accepted crawl job {CrawlJobId} for {StartUrl}", jobId, request.Url);
     if (useDirectExecution)
     {
-        await crawlService.ExecuteAsync(request, jobId, cancellationToken);
-        var completedJob = await repository.GetByIdAsync(jobId, cancellationToken);
-        var pages = await repository.GetPagesAsync(jobId, cancellationToken);
-        var history = await repository.GetRecentAsync(cancellationToken: cancellationToken);
-        return Results.Ok(new { job = completedJob, pages, history });
+        await jobQueue.EnqueueAsync(request, jobId, cancellationToken);
+        return Results.Accepted($"/api/jobs/{jobId}", new { jobId, status = CrawlJobStatus.Pending.ToString() });
     }
 
     await publisher.PublishCrawlRequestAsync(request, jobId, cancellationToken);
